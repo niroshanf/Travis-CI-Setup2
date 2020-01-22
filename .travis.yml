@@ -1,0 +1,20 @@
+language: objective-c
+osx_image: xcode11.3
+
+before_script:
+
+- gem install xcpretty
+- gem install cocoapods
+- pod install --project-directory=.
+
+jobs:
+  include:
+    - stage: English App
+      script:
+        - set -o pipefail && xcodebuild -workspace Travis-CI-SETUP2.xcworkspace -scheme English -destination 'platform=iOS Simulator,name=iPhone 8,OS=11.0.1' -configuration Debug build test ONLY_ACTIVE_ARCH=NO | xcpretty
+        - set -o pipefail && xcodebuild -workspace Travis-CI-SETUP2.xcworkspace -scheme English -destination 'platform=iOS Simulator,name=iPhone 8 Plus,OS=13.3' -configuration Debug build test ONLY_ACTIVE_ARCH=NO | xcpretty
+
+    - stage: Arabic App
+      script:
+        - set -o pipefail && xcodebuild -workspace Travis-CI-SETUP2.xcworkspace -scheme Arabic -destination 'platform=iOS Simulator,name=iPhone 8,OS=11.0.1' -configuration Debug build test ONLY_ACTIVE_ARCH=NO | xcpretty
+        - set -o pipefail && xcodebuild -workspace Travis-CI-SETUP2.xcworkspace -scheme Arabic -destination 'platform=iOS Simulator,name=iPhone 8 Plus,OS=13.3' -configuration Debug build test ONLY_ACTIVE_ARCH=NO | xcpretty
