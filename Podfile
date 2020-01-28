@@ -3,7 +3,8 @@ platform :ios, '11.0'
 
 def shared_pods
   #pod "aaadaptiveCollectionView", :git => 'https://github.com/menews/aaadaptiveCollectionView.git'
-  pod 'ANFAdaptiveCollectionView'
+  #pod 'ANFAdaptiveCollectionView'
+  pod "aaadaptiveCollectionView", :git => 'git@github.com:menews/aaadaptiveCollectionView.git'
 end
 
 target 'Arabic' do
